@@ -1,66 +1,85 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# JWT Authentication Microservices with Laravel 10 and PHP 8
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This repository contains a microservices project built using Laravel 10 and PHP 8, implementing JWT (JSON Web Tokens) authentication. It also includes documentation generated with L5 Swagger for easier API exploration. This README will guide you through the installation process, setup of the project, how to test the services, and encourage you to contribute to the project.
 
-## About Laravel
+## Installation
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Follow these steps to set up and run the microservices project:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Prerequisites
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Before you begin, ensure you have the following prerequisites installed on your system:
 
-## Learning Laravel
+- [PHP](https://www.php.net/) 8 or higher
+- [Composer](https://getcomposer.org/)
+- [Node.js](https://nodejs.org/)
+- [NPM](https://www.npmjs.com/) (Node Package Manager)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Clone the Repository
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+First, clone this GitHub repository to your local machine:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+git clone https://github.com/Manish06097/PHP_Auth_JWT_MicroService_Production.git
+```
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#### Install Dependencies
+Navigate to the project's root directory and install the PHP and JavaScript dependencies:
 
-### Premium Partners
+```bash
+cd PHP_Auth_JWT_MicroService_Production
+composer install
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+#### Configure JWT Authentication
+To set up JWT authentication, follow these steps:
+1. Open the .env file and configure your database settings:
+   ```bash
+    DB_CONNECTION=mysql
+    DB_HOST=your-database-host
+    DB_PORT=your-database-port
+    DB_DATABASE=your-database-name
+    DB_USERNAME=your-database-username
+    DB_PASSWORD=your-database-password
+   ```
+2. Generate a JWT secret key:
+   ```bash
+   php artisan jwt:secret
+   ```
 
-## Contributing
+#### Migrate the Database
+Run the database migrations to create the necessary tables
+```bash
+php artisan migrate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Generate Swagger Documentation
+To generate Swagger documentation for your APIs, use the following command:
+```bash
+php artisan l5-swagger:generate
+```
 
-## Code of Conduct
+#### Running the Microservices
+You can now run your microservices. Start the Laravel development server:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+php artisan serve
+```
 
-## Security Vulnerabilities
+Your microservices should now be up and running. You can access the Swagger documentation at http://localhost:8000/api/documentation.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Testing the Services
 
-## License
+#### Automated Testing
+To run automated tests, execute the following command:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan test
+```
+This command will run the test suite and provide you with feedback on the functionality and reliability of your microservices.
+
+## Contribute and Show Your Support
+If you find this project useful and like what you see, please consider giving it a star on GitHub. Your support encourages the maintainers and lets them know that you appreciate their work.
+If you encounter issues or have suggestions for improvements, please don't hesitate to raise issues on the project's GitHub repository. You're also welcome to contribute by submitting pull requests with enhancements or bug fixes. Your contributions will help make this project even better for the community.
+Thank you for your interest in and support of this microservices project!
